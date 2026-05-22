@@ -40,3 +40,13 @@ Permitir a los usuarios registrarse en los eventos académicos disponibles en la
 * **Pruebas Unitarias:** Validar estrictamente las funciones de chequeo de fechas límite y cálculo matemático de cupos disponibles.
 * **Pruebas de Integración (Concurrencia):** Simular múltiples peticiones simultáneas intentando tomar el último cupo disponible de un evento para garantizar que solo una petición sea exitosa.
 * **Pruebas Funcionales:** Comprobar el flujo completo de inscripción desde la vista del participante y desde la vista del organizador.
+
+* ### 2. Historias de Usuario y Criterios de Aceptación
+
+**Historia de Usuario:**
+Como participante, quiero completar el formulario de inscripción con mis datos personales para asegurar mi cupo en el evento.
+
+**Criterios de Aceptación (Enriquecidos con OWASP - Prevención de Inyección y XSS):**
+* El sistema debe implementar validación estricta de entrada (Input Validation) en el *backend* para todos los campos del formulario de inscripción.
+* Se deben utilizar consultas parametrizadas (Prepared Statements) en la base de datos al guardar la inscripción para prevenir ataques de Inyección SQL.
+* Todos los datos ingresados por el participante deben ser sanitizados antes de ser almacenados o renderizados en la vista de los organizadores para evitar ataques de Cross-Site Scripting (XSS).
