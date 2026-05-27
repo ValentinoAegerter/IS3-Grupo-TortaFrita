@@ -35,3 +35,12 @@ Automatizar la emisión de certificados para los participantes y disertantes de 
 **7. Estrategia de Verificación**
 * Pruebas unitarias: Forzar la solicitud de descarga de un certificado para un usuario que se inscribió pero no fue acreditado, verificando que el sistema devuelva un error de permisos (403 Forbidden).
 * Pruebas de integración: Generar un certificado, copiar su código de verificación y consultarlo en el endpoint público asegurando que devuelva los datos correctos del documento.
+### 2. Historias de Usuario y Criterios de Aceptación
+
+**Historia de Usuario:**
+Como organizador, quiero generar los certificados de asistencia para los participantes que cumplieron con la acreditación.
+
+**Criterios de Aceptación (Enriquecidos con OWASP - Control de Acceso):**
+* El *endpoint* encargado de la generación de certificados debe verificar explícitamente en el *backend* que el usuario autenticado posee el rol de "Organizador" del evento en cuestión.
+* El sistema debe implementar controles contra IDOR (Insecure Direct Object Reference), asegurando que un participante no pueda manipular el ID en la URL para descargar el certificado de otra persona.
+* Toda petición de generación o descarga de certificados debe requerir un token de sesión válido y no expirado.
