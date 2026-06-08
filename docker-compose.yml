@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 services:
   # Servicio de la Base de Datos
@@ -8,11 +9,28 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin123
       POSTGRES_DB: eventos_academicos
+=======
+services:
+  app:
+    build: .
+    container_name: tortafrita-app
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:17
+    container_name: tortafrita-db
+    environment:
+      POSTGRES_DB: eventos
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+>>>>>>> 80c34a75242e6bfa8d3ca119c01c68f2dd2704d3
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+<<<<<<< HEAD
   # Servicio de la Aplicación
   app:
     build: .
@@ -28,5 +46,7 @@ services:
       - db
 
 
+=======
+>>>>>>> 80c34a75242e6bfa8d3ca119c01c68f2dd2704d3
 volumes:
   postgres_data:
