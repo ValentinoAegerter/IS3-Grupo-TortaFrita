@@ -1,52 +1,27 @@
-<<<<<<< HEAD
-
 services:
-  # Servicio de la Base de Datos
   db:
     image: postgres:15-alpine
-    container_name: eventos_db
+    container_name: tortafrita_db
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin123
       POSTGRES_DB: eventos_academicos
-=======
-services:
-  app:
-    build: .
-    container_name: tortafrita-app
-    depends_on:
-      - postgres
-
-  postgres:
-    image: postgres:17
-    container_name: tortafrita-db
-    environment:
-      POSTGRES_DB: eventos
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin123
->>>>>>> 80c34a75242e6bfa8d3ca119c01c68f2dd2704d3
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-<<<<<<< HEAD
-  # Servicio de la Aplicación
   app:
     build: .
-    container_name: eventos_app
+    container_name: tortafrita_app
     ports:
       - "8080:8080"
     environment:
-      
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/eventos_academicos
       - SPRING_DATASOURCE_USERNAME=admin
-      - SPRING_DATASOURCE_PASSWORD=adminpassword
+      - SPRING_DATASOURCE_PASSWORD=admin123
     depends_on:
       - db
 
-
-=======
->>>>>>> 80c34a75242e6bfa8d3ca119c01c68f2dd2704d3
 volumes:
   postgres_data:
